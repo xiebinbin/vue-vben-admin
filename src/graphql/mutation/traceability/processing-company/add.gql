@@ -1,0 +1,6 @@
+mutation traceability_processing_company_add($input: TraceabilityProcessingCompanyInput!){
+  traceability_processing_company_add(input: $input) {
+    code
+    message
+  }
+}

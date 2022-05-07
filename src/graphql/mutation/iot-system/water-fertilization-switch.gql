@@ -1,0 +1,6 @@
+mutation iot_water_fertilization_switch($switch_master: String!){
+  iot_water_fertilization_switch(switch_master: $switch_master) {
+    code
+    message
+  }
+}

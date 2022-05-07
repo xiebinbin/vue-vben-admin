@@ -1,0 +1,6 @@
+query traceability_farmer_all($input: TraceabilityFarmerAllInput!){
+  traceability_farmer_all(input: $input) {
+    id
+    name
+  }
+}

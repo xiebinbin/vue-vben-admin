@@ -1,0 +1,6 @@
+mutation add_expert_system_question($input: EditExpertSystemQuestionInput!){
+  add_expert_system_question(input: $input) {
+    code
+    message
+  }
+}

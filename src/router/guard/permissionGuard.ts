@@ -10,10 +10,10 @@ import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
 import { RootRoute } from '/@/router/routes';
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN;
-
+const BIG_DATA_HOME = PageEnum.BIG_DATA_HOME;
 const ROOT_PATH = RootRoute.path;
 
-const whitePathList: PageEnum[] = [LOGIN_PATH];
+const whitePathList: PageEnum[] = [LOGIN_PATH, BIG_DATA_HOME];
 
 export function createPermissionGuard(router: Router) {
   const userStore = useUserStoreWithOut();

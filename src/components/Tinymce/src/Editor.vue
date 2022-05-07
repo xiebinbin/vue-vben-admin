@@ -72,7 +72,6 @@
   import { isNumber } from '/@/utils/is';
   import { useLocale } from '/@/locales/useLocale';
   import { useAppStore } from '/@/store/modules/app';
-
   const tinymceProps = {
     options: {
       type: Object as PropType<Partial<RawEditorSettings>>,
@@ -309,6 +308,7 @@
       }
 
       function getUploadingImgName(name: string) {
+        name = escape(name);
         return `[uploading:${name}]`;
       }
 

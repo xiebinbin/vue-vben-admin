@@ -1,0 +1,10 @@
+query traceability_processing_company($id: ID!){
+  traceability_processing_company(id: $id) {
+    id
+    name
+    organization_code_certificate
+    remark
+    created_at
+    updated_at
+  }
+}

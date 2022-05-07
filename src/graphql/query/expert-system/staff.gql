@@ -1,0 +1,21 @@
+query expert_system_staff($id: ID!){
+  expert_system_staff(id: $id) {
+    id
+    expert_system_staff_category {
+      id
+      name
+      expert_system_staff_number
+      created_at
+      updated_at
+    }
+    avatar
+    name
+    job_title
+    work_unit
+    expertise
+    article_number
+    question_number
+    created_at
+    updated_at
+  }
+}

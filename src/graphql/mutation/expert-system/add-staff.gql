@@ -1,0 +1,6 @@
+mutation add_staff($input: EditStaffInput!){
+  add_staff(input: $input) {
+    code
+    message
+  }
+}

@@ -1,0 +1,6 @@
+query staff_category($id: ID!){
+  expert_system_staff_category(id: $id) {
+    id
+    name
+  }
+}

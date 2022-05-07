@@ -1,0 +1,6 @@
+mutation traceability_processing_company_remove($id: ID!){
+  traceability_processing_company_remove(id: $id) {
+    code
+    message
+  }
+}

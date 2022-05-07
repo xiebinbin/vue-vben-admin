@@ -1,0 +1,20 @@
+query traceability_product_input($id: ID!){
+  traceability_product_input(id: $id) {
+    id
+    product {
+      id
+      name
+      cover
+    }
+    plot_land {
+      id
+      title
+      code
+    }
+    cover
+    batch
+    unit
+    number
+    remark
+  }
+}

@@ -1,0 +1,6 @@
+mutation add_expert_system_article($input: EditExpertSystemArticleInput!){
+  add_expert_system_article(input: $input) {
+    code
+    message
+  }
+}

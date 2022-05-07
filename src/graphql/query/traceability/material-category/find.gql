@@ -1,0 +1,10 @@
+query traceability_material_category($id: ID!){
+  traceability_material_category(id: $id) {
+    id
+    name
+    unit
+    remark
+    created_at
+    updated_at
+  }
+}

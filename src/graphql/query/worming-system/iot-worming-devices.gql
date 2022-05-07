@@ -1,0 +1,9 @@
+query iot_worming_devices{
+  iot_worming_devices {
+    id
+    name
+    code
+    created_at
+    updated_at
+  }
+}

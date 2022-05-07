@@ -1,0 +1,11 @@
+query traceability_farmer($id: ID!){
+  traceability_farmer(id: $id) {
+    id
+    name
+    id_card
+    phone
+    remark
+    created_at
+    updated_at
+  }
+}

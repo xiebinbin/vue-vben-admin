@@ -1,0 +1,9 @@
+query iot_water_level_devices{
+  iot_water_level_devices {
+    id
+    name
+    code
+    created_at
+    updated_at
+  }
+}

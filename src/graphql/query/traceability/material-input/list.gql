@@ -1,0 +1,21 @@
+query traceability_material_input_list($input: TraceabilityMaterialInputListInput!){
+  traceability_material_input_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      category{
+        id
+        name
+        unit
+      }
+      batch
+      number
+      residual
+      created_at
+      updated_at
+    }
+  }
+}

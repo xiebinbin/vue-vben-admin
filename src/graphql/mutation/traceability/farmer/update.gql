@@ -1,0 +1,6 @@
+mutation traceability_farmer_update($id: ID!, $input: TraceabilityFarmerInput!){
+  traceability_farmer_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

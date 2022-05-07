@@ -1,0 +1,26 @@
+query traceability_material_output($id: ID!){
+  traceability_material_output(id: $id) {
+    id
+    material_input {
+      id
+      category{
+        name
+        id
+      }
+      batch
+      cover
+      number
+      residual
+      remark
+      created_at
+      updated_at
+    }
+    cover
+    number
+    receiver
+    manager
+    remark
+    created_at
+    updated_at
+  }
+}

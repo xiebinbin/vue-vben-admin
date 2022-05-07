@@ -1,0 +1,16 @@
+query traceability_processing_company_list($input: TraceabilityProcessingCompanyListInput!){
+  traceability_processing_company_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      name
+      organization_code_certificate
+      remark
+      created_at
+      updated_at
+    }
+  }
+}

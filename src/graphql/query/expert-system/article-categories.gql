@@ -1,0 +1,7 @@
+query article_categories{
+  expert_system_article_categories {
+    id
+    name
+    created_at
+  }
+}

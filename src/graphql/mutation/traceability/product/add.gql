@@ -1,0 +1,6 @@
+mutation ttraceability_product_add($input: TraceabilityProductEditInput!){
+  traceability_product_add(input: $input) {
+    code
+    message
+  }
+}

@@ -1,0 +1,6 @@
+mutation traceability_material_category_update($id: ID!, $input: TraceabilityMaterialCategoryInput!){
+  traceability_material_category_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

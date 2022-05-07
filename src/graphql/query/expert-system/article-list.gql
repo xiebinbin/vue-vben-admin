@@ -1,0 +1,24 @@
+query expert_system_article_list($input: ExpertSystemArticleListInput!){
+  expert_system_article_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    q
+    items {
+      id
+      title
+      expert_system_article_category {
+        id
+        name
+      }
+      expert_system_staff {
+        id
+        name
+      }
+      online_status
+      created_at
+      updated_at
+    }
+  }
+}

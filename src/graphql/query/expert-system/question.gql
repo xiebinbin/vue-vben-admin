@@ -1,0 +1,17 @@
+query expert_system_question($id: ID!){
+  expert_system_question(id: $id) {
+    id
+    title
+    content
+    answer
+    name
+    contact
+    expert_system_staff {
+      id
+      name
+    }
+    online_status
+    created_at
+    updated_at
+  }
+}

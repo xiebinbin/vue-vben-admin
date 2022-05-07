@@ -1,0 +1,6 @@
+mutation traceability_plot_land_update($id: ID!, $input: TraceabilityPlotLandInput!){
+  traceability_plot_land_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

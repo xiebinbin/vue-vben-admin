@@ -1,0 +1,6 @@
+mutation update_staff_category($id: ID!, $input: EditStaffCategoryInput!){
+  update_staff_category(id: $id,input: $input) {
+    code
+    message
+  }
+}

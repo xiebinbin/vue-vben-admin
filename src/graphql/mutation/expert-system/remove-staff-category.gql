@@ -1,0 +1,6 @@
+mutation remove_staff_category($id: ID!){
+  remove_staff_category(id: $id) {
+    code
+    message
+  }
+}

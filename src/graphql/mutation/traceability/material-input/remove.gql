@@ -1,0 +1,6 @@
+mutation traceability_material_input_remove($id: ID!){
+  traceability_material_input_remove(id: $id) {
+    code
+    message
+  }
+}

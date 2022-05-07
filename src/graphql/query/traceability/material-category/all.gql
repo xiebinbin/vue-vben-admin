@@ -1,0 +1,6 @@
+query traceability_material_category_all($input: TraceabilityMaterialCategoryAllInput!){
+  traceability_material_category_all(input: $input) {
+    id
+    name
+  }
+}

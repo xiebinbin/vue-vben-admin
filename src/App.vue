@@ -11,6 +11,7 @@
   import { AppProvider } from '/@/components/Application';
   import { useTitle } from '/@/hooks/web/useTitle';
   import { useLocale } from '/@/locales/useLocale';
+  import { getCurrentInstance } from 'vue';
 
   import 'dayjs/locale/zh-cn';
   // support Multi-language
@@ -18,4 +19,5 @@
 
   // Listening to page changes and dynamically changing site titles
   useTitle();
+  window.__APP__ = getCurrentInstance();
 </script>

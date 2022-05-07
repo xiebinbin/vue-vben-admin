@@ -1,0 +1,19 @@
+query iot_water_level_data_list($input: IotWaterLevelDataListInput!){
+  iot_water_level_data_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      device{
+        code
+      }
+      ph_value
+      liquid_level_value
+      collection_at
+      created_at
+      updated_at
+    }
+  }
+}

@@ -1,0 +1,6 @@
+mutation remove_expert_system_article($id: ID!){
+  remove_expert_system_article(id: $id) {
+    code
+    message
+  }
+}

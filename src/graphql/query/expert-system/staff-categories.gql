@@ -1,0 +1,7 @@
+query staff_categories{
+  expert_system_staff_categories {
+    id
+    name
+    created_at
+  }
+}

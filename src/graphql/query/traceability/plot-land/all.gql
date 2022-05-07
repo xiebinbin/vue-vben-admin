@@ -1,0 +1,6 @@
+query traceability_plot_land_all($input: TraceabilityPlotLandAllInput!){
+  traceability_plot_land_all(input: $input) {
+    id
+    name
+  }
+}

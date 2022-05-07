@@ -4,4 +4,8 @@ export enum RoleEnum {
 
   // tester
   TEST = 'test',
+
+  EXPERT = 'expert',
+
+  ADMINISTRATOR = 'administrator',
 }

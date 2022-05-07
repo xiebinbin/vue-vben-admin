@@ -1,0 +1,16 @@
+query traceability_material_category_list($input: TraceabilityMaterialCategoryListInput!){
+  traceability_material_category_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      name
+      unit
+      remark
+      created_at
+      updated_at
+    }
+  }
+}

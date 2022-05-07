@@ -1,0 +1,6 @@
+mutation add_staff_category($input: EditStaffCategoryInput!){
+  add_staff_category(input: $input) {
+    code
+    message
+  }
+}

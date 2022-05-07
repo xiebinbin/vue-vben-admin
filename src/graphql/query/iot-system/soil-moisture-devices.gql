@@ -1,0 +1,9 @@
+query iot_soil_moisture_devices{
+  iot_soil_moisture_devices {
+    id
+    name
+    code
+    created_at
+    updated_at
+  }
+}

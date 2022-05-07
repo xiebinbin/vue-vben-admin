@@ -1,0 +1,14 @@
+query traceability_farmer_list($input: TraceabilityFarmerListInput!){
+  traceability_farmer_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      name
+      created_at
+      updated_at
+    }
+  }
+}

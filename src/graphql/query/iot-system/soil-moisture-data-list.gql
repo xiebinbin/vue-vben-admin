@@ -1,0 +1,21 @@
+query iot_soil_moisture_data_list($input: IotSoilMoistureDataListInput!){
+  iot_soil_moisture_data_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      device{
+        code
+      }
+      ph_value
+      salinity_value
+      temperature_value
+      humidity_value
+      collection_at
+      created_at
+      updated_at
+    }
+  }
+}

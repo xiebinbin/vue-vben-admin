@@ -1,0 +1,6 @@
+query traceability_processing_company_all($input: TraceabilityProcessingCompanyAllInput!){
+  traceability_processing_company_all(input: $input) {
+    id
+    name
+  }
+}

@@ -1,0 +1,6 @@
+mutation add_article_category($input: EditExpertSystemArticleCategoryInput!){
+  add_expert_system_article_category(input: $input) {
+    code
+    message
+  }
+}

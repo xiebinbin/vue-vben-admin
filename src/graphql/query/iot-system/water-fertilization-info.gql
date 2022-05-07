@@ -1,0 +1,21 @@
+query iot_water_fertilization_info{
+  iot_water_fertilization_info {
+    data {
+      a_moment
+      a_when
+      a_cumulative
+      b_moment
+      b_when
+      b_cumulative
+      c_moment
+      c_when
+      c_cumulative
+    }
+    powers {
+      a
+      b
+      c
+      water
+    }
+  }
+}

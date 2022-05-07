@@ -1,0 +1,6 @@
+mutation up_expert_system_question($id: ID!){
+  up_expert_system_question(id: $id) {
+    code
+    message
+  }
+}

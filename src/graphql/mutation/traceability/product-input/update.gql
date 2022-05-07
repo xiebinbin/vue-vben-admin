@@ -1,0 +1,6 @@
+mutation traceability_product_input_update($id: ID!, $input: TraceabilityProductInputInput!){
+  traceability_product_input_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

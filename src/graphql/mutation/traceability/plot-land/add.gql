@@ -1,0 +1,6 @@
+mutation traceability_plot_land_add($input: TraceabilityPlotLandInput!){
+  traceability_plot_land_add(input: $input) {
+    code
+    message
+  }
+}

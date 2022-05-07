@@ -1,0 +1,20 @@
+query expert_system_question_list($input: ExpertSystemQuestionListInput!){
+  expert_system_question_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    q
+    items {
+      id
+      title
+      expert_system_staff {
+        id
+        name
+      }
+      online_status
+      created_at
+      updated_at
+    }
+  }
+}

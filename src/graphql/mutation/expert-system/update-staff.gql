@@ -1,0 +1,6 @@
+mutation update_staff($id: ID!, $input: EditStaffInput!){
+  update_staff(id: $id, input: $input) {
+    code
+    message
+  }
+}

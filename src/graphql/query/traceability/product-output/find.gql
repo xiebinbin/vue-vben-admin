@@ -1,0 +1,35 @@
+query traceability_product_output($id: ID!){
+  traceability_product_output(id: $id) {
+    id
+    product_input {
+      id
+      cover
+      product{
+        id
+        name
+      }
+      plot_land {
+        id
+        name
+      }
+      batch
+      unit
+      number
+      remark
+      status
+    }
+    processing_company {
+      id
+      name
+      organization_code_certificate
+    }
+    batch
+    cover
+    number
+    unit
+    manager
+    remark
+    created_at
+    updated_at
+  }
+}

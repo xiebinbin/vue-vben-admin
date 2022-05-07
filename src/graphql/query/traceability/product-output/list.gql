@@ -1,0 +1,38 @@
+query traceability_product_output_list($input: TraceabilityProductOutputListInput!){
+  traceability_product_output_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      product_input {
+        id
+        cover
+        product{
+          id
+          name
+        }
+        plot_land {
+          id
+          title
+        }
+        batch
+        unit
+        number
+      }
+      processing_company {
+        id
+        name
+        organization_code_certificate
+      }
+      batch
+      cover
+      number
+      unit
+      manager
+      created_at
+      updated_at
+    }
+  }
+}

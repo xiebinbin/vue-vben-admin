@@ -146,6 +146,8 @@ export interface GlobConfig {
   urlPrefix?: string;
   // Project abbreviation
   shortName: string;
+  // graphql url
+  graphqlUrl?: string;
 }
 export interface GlobEnvConfig {
   // Site title
@@ -158,4 +160,6 @@ export interface GlobEnvConfig {
   VITE_GLOB_APP_SHORT_NAME: string;
   // Upload url
   VITE_GLOB_UPLOAD_URL?: string;
+  // graphql url
+  VITE_GRAPHQL_API?: string;
 }

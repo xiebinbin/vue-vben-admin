@@ -14,6 +14,7 @@ import { setupStore } from '/@/store';
 import { setupGlobDirectives } from '/@/directives';
 import { setupI18n } from '/@/locales/setupI18n';
 import { registerGlobComp } from '/@/components/registerGlobComp';
+import { setupApollo } from './graphql/client';
 
 async function bootstrap() {
   const app = createApp(App);
@@ -45,7 +46,7 @@ async function bootstrap() {
 
   // https://next.router.vuejs.org/api/#isready
   // await router.isReady();
-
+  setupApollo(app);
   app.mount('#app');
 }
 

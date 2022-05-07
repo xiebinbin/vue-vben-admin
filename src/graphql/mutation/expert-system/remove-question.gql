@@ -1,0 +1,6 @@
+mutation remove_expert_system_question($id: ID!){
+  remove_expert_system_question(id: $id) {
+    code
+    message
+  }
+}

@@ -1,0 +1,6 @@
+mutation update_expert_system_question($id: ID!, $input: EditExpertSystemQuestionInput!){
+  update_expert_system_question(id: $id,input: $input) {
+    code
+    message
+  }
+}

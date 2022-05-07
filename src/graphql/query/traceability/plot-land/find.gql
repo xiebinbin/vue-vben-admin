@@ -1,0 +1,16 @@
+query traceability_plot_land($id: ID!){
+  traceability_plot_land(id: $id) {
+    id
+    title
+    code
+    area
+    remark
+    farmer{
+      id
+      name
+      id_card
+    }
+    created_at
+    updated_at
+  }
+}

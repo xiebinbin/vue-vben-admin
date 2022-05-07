@@ -14,13 +14,11 @@
   import { getBasicColumns } from './tableData';
   import { PageWrapper } from '/@/components/Page';
 
-  import { demoListApi } from '/@/api/demo/table';
   export default defineComponent({
     components: { BasicTable, PageWrapper },
     setup() {
       const [registerTable, { reload }] = useTable({
         title: '远程加载示例',
-        api: demoListApi,
         columns: getBasicColumns(),
         pagination: { pageSize: 10 },
       });

@@ -55,6 +55,7 @@
         const url = file?.response?.url;
         const name = file?.name;
 
+        console.log('上传图片', status, url);
         if (status === 'uploading') {
           if (!uploading) {
             emit('uploading', name);

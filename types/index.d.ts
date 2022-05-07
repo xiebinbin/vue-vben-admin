@@ -1,3 +1,5 @@
+import { DollarApollo } from '@vue/apollo-option/types/vue-apollo';
+
 declare interface Fn<T = any, R = T> {
   (...arg: T[]): R;
 }
@@ -25,3 +27,7 @@ declare interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
 declare type ComponentRef<T extends HTMLElement = HTMLDivElement> = ComponentElRef<T> | null;
 
 declare type ElRef<T extends HTMLElement = HTMLDivElement> = Nullable<T>;
+
+declare namespace ComponentPublicInstance {
+  let $apollo: DollarApollo;
+}

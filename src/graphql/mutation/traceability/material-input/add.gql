@@ -1,0 +1,6 @@
+mutation traceability_material_input_add($input: TraceabilityMaterialInputInput!){
+  traceability_material_input_add(input: $input) {
+    code
+    message
+  }
+}

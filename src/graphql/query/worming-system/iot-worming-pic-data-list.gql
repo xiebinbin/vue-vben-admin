@@ -1,0 +1,19 @@
+query iot_worming_pic_data_list($input: IotWormingPicDataListInput!){
+  iot_worming_pic_data_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      device{
+        code
+      }
+      pic_url
+      tag
+      collection_at
+      created_at
+      updated_at
+    }
+  }
+}
