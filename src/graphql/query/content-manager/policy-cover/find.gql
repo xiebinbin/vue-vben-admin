@@ -1,0 +1,11 @@
+query big_data_policy_cover($id: ID!){
+  big_data_policy_cover(id: $id) {
+    id
+    image_url
+    link
+    sort
+    status
+    created_at
+    updated_at
+  }
+}

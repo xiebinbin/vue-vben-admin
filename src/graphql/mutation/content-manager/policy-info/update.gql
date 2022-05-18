@@ -1,0 +1,6 @@
+mutation big_data_policy_article_update($id: ID!, $input: BigDataPolicyArticleInput!){
+  big_data_policy_article_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

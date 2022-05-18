@@ -1,0 +1,6 @@
+mutation common_product_add($input: CommonProductEditInput!){
+  common_product_add(input: $input) {
+    code
+    message
+  }
+}

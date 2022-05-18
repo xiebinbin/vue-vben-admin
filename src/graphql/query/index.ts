@@ -3,6 +3,7 @@ import expertSystem from './expert-system/index';
 import iotSystem from './iot-system/index';
 import wormingSystem from './worming-system/index';
 import traceability from './traceability/index';
+import contentManager from './content-manager/index';
 
 export default {
   ...auth,
@@ -10,4 +11,5 @@ export default {
   ...iotSystem,
   ...wormingSystem,
   ...traceability,
+  ...contentManager,
 };

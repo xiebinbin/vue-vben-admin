@@ -1,0 +1,6 @@
+ mutation common_setting_update_multiple($items: [CommonSettingUpdateMultipleInput]!){
+  common_setting_update_multiple(items: $items) {
+    code
+    message
+  }
+}

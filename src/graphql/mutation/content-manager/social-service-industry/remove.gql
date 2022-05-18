@@ -1,0 +1,6 @@
+mutation big_data_social_service_industry_remove($id: ID!){
+  big_data_social_service_industry_remove(id: $id) {
+    code
+    message
+  }
+}

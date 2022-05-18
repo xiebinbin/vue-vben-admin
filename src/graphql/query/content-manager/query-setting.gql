@@ -1,0 +1,6 @@
+query common_setting_query_multiple($keys: [String!]){
+  common_setting_query_multiple(keys: $keys) {
+    key
+    val
+  }
+}

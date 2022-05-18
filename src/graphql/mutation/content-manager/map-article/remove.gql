@@ -1,0 +1,6 @@
+mutation big_data_map_article_add($id: ID!){
+  big_data_map_article_add(id: $id) {
+    code
+    message
+  }
+}

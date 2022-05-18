@@ -1,0 +1,18 @@
+query big_data_social_service_industry($id: ID!){
+  big_data_social_service_industry(id: $id) {
+    id
+    title
+    category
+    pricing
+    pricing_unit
+    start_date
+    end_date
+    contact
+    phone
+    address
+    status
+    content
+    created_at
+    updated_at
+  }
+}

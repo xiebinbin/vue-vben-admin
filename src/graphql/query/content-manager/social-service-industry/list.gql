@@ -1,0 +1,15 @@
+query big_data_social_service_industry_list($input: BigDataSocialServiceIndustryListInput!){
+  big_data_social_service_industry_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      title
+      status
+      created_at
+      updated_at
+    }
+  }
+}

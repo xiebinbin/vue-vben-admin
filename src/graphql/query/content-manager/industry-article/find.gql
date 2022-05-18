@@ -1,0 +1,12 @@
+query big_data_industry_article($id: ID!){
+  big_data_industry_article(id: $id) {
+    id
+    title
+    sort
+    status
+    content
+    cover
+    created_at
+    updated_at
+  }
+}

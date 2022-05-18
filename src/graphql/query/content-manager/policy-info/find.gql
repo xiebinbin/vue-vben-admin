@@ -1,0 +1,13 @@
+query big_data_policy_article($id: ID!){
+  big_data_policy_article(id: $id) {
+    id
+    title
+    desc
+    cover
+    sort
+    status
+    content
+    created_at
+    updated_at
+  }
+}

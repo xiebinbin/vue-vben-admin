@@ -1,0 +1,6 @@
+mutation big_data_policy_cover_remove($id: ID!){
+  big_data_policy_cover_remove(id: $id) {
+    code
+    message
+  }
+}

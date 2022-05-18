@@ -63,6 +63,7 @@
   const localeStore = useLocaleStore();
   const showLocale = localeStore.getShowPicker;
   const title = computed(() => globSetting?.title ?? '');
+  console.log(prefixCls);
 </script>
 <style lang="less">
   @prefix-cls: ~'@{namespace}-login';

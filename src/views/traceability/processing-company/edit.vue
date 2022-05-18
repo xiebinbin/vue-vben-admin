@@ -21,16 +21,13 @@
   import { CollapseContainer } from '/@/components/Container';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { PageWrapper } from '/@/components/Page';
+  import { uploadApi } from '/@/api/sys/upload';
   import gql from '/@/graphql/index';
-  interface InputItem {
-    name: String;
-    organization_code_certificate: String;
-    remark: String;
-  }
-  const inputData = reactive<InputItem>({
+  const inputData = reactive({
     name: '',
     organization_code_certificate: '',
     remark: '',
+    certificate_images: [],
   });
   const itemId = ref<any>(null);
   const pageTitle = ref<string>('加工企业');
@@ -77,6 +74,28 @@
       },
     },
     {
+      field: 'certificate_images',
+      component: 'Upload',
+      label: '证书图片',
+      colProps: {
+        span: 12,
+      },
+      componentProps: ({}) => {
+        return {
+          multiple: true,
+          api: uploadApi,
+          onChange: (fileList: any) => {
+            if (fileList.length > 0) {
+              inputData.certificate_images = fileList;
+            } else {
+              inputData.certificate_images = [];
+            }
+          },
+          defaultValue: inputData.certificate_images,
+        };
+      },
+    },
+    {
       field: 'remark',
       component: 'InputTextArea',
       label: '备注',
@@ -106,10 +125,12 @@
         inputData.name = '';
         inputData.organization_code_certificate = '';
         inputData.remark = '';
+        inputData.certificate_images = [];
         methods.setFieldsValue({
           name: '',
           organization_code_certificate: '',
           remark: '',
+          certificate_images: [],
         });
         methods.clearValidate();
       };
@@ -128,8 +149,13 @@
           methods.setFieldsValue({
             name: info.name,
             organization_code_certificate: info.organization_code_certificate,
+            certificate_images: info.certificate_images,
             remark: info.remark,
           });
+          inputData.name = info.name;
+          inputData.organization_code_certificate = info.organization_code_certificate;
+          inputData.certificate_images = info.certificate_images;
+          inputData.remark = info.remark;
         });
         pageTitle.value = '编辑加工企业';
       } else {

@@ -1,0 +1,16 @@
+query big_data_map_article_list($input: BigDataMapArticleListInput!){
+  big_data_map_article_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      title
+      tag
+      status
+      created_at
+      updated_at
+    }
+  }
+}

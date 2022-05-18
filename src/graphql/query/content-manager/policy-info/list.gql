@@ -1,0 +1,15 @@
+query big_data_policy_article_list($input: BigDataPolicyArticleListInput!){
+  big_data_policy_article_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      title
+      status
+      created_at
+      updated_at
+    }
+  }
+}

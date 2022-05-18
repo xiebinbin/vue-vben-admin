@@ -49,10 +49,12 @@
     </FormItem>
   </Form>
 </template>
-<script lang="ts">
-  import { reactive, ref, unref, computed, getCurrentInstance } from 'vue';
+<script lang="ts" setup>
+  import { reactive, ref, unref, computed } from 'vue';
 
-  import { Form, Input, Row, Col } from 'ant-design-vue';
+  import { Checkbox, Form, Input, Row, Col, Button } from 'ant-design-vue';
+
+  import LoginFormTitle from './LoginFormTitle.vue';
 
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useMessage } from '/@/hooks/web/useMessage';
@@ -71,7 +73,7 @@
   const { prefixCls } = useDesign('login');
   const userStore = useUserStore();
 
-  const { setLoginState, getLoginState } = useLoginState();
+  const { getLoginState } = useLoginState();
   const { getFormRules } = useFormRules();
 
   const formRef = ref();
@@ -89,7 +91,6 @@
 
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
 
-  const internalInstance = getCurrentInstance();
   async function handleLogin() {
     const data = await validForm();
     if (!data) return;
@@ -117,23 +118,4 @@
       loading.value = false;
     }
   }
-  export default {
-    components: {
-      ACol,
-      ARow,
-      FormItem,
-      InputPassword,
-    },
-    setup() {
-      return {
-        handleLogin,
-        formData,
-        rememberMe,
-        internalInstance,
-        getShow,
-        getFormRules,
-        setLoginState,
-      };
-    },
-  };
 </script>

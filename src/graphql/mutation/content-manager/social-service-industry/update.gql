@@ -1,0 +1,6 @@
+mutation big_data_social_service_industry_update($id: ID!, $input: BigDataSocialServiceIndustryInput!){
+  big_data_social_service_industry_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

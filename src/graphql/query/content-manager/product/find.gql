@@ -1,0 +1,23 @@
+query common_product($id: ID!){
+  common_product(id: $id) {
+    id
+    name
+    cover
+    desc
+    content
+    processing_company {
+      id
+      name
+      organization_code_certificate
+      certificate_images
+      remark
+      created_at
+      updated_at
+    }
+    status
+    remark
+    sort
+    created_at
+    updated_at
+  }
+}

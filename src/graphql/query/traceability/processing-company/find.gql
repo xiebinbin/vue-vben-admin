@@ -3,6 +3,7 @@ query traceability_processing_company($id: ID!){
     id
     name
     organization_code_certificate
+    certificate_images
     remark
     created_at
     updated_at

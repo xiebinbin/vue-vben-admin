@@ -1,0 +1,17 @@
+query big_data_policy_cover_list($input: BigDataPolicyCoverListInput!){
+  big_data_policy_cover_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      image_url
+      link
+      sort
+      status
+      created_at
+      updated_at
+    }
+  }
+}

@@ -1,0 +1,6 @@
+mutation big_data_policy_cover_add($input: BigDataPolicyCoverInput!){
+  big_data_policy_cover_add(input: $input) {
+    code
+    message
+  }
+}

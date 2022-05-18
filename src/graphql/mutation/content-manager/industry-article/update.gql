@@ -1,0 +1,6 @@
+mutation big_data_industry_article_update($id: ID!, $input: BigDataIndustryArticleInput!){
+  big_data_industry_article_update(id: $id, input: $input) {
+    code
+    message
+  }
+}
