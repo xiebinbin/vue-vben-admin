@@ -1,0 +1,14 @@
+query fixed_asset_list($input: FixedAssetListInput!){
+  fixed_asset_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      title
+      created_at
+      updated_at
+    }
+  }
+}

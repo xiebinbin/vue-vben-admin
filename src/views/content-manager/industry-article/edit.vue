@@ -20,15 +20,16 @@
   import { CollapseContainer } from '/@/components/Container';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { PageWrapper } from '/@/components/Page';
-  import { Tinymce } from '/@/components/Tinymce/index';
   import gql from '/@/graphql/index';
   import { uploadApi } from '/@/api/sys/upload';
+  import { Tinymce } from '/@/components/Tinymce/index';
   const itemId = ref<any>(null);
   const pageTitle = ref<string>('产业管理');
   const formData = reactive({
     title: '',
     desc: '',
     cover: '',
+    images: [],
     sort: 0,
     status: 'DOWN',
     content: '',
@@ -95,7 +96,7 @@
       component: 'Upload',
       label: '封面(300*300)',
       colProps: {
-        span: 12,
+        span: 18,
       },
       componentProps: ({}) => {
         return {
@@ -109,6 +110,28 @@
             }
           },
           defaultValue: !!formData.cover ? [formData.cover] : [],
+        };
+      },
+    },
+    {
+      field: 'images',
+      component: 'Upload',
+      label: '图片列表(限制4张300*300)',
+      colProps: {
+        span: 18,
+      },
+      componentProps: ({}) => {
+        return {
+          multiple: false,
+          api: uploadApi,
+          onChange: (fileList: any) => {
+            if (fileList.length > 0) {
+              formData.images = fileList;
+            } else {
+              formData.images = [];
+            }
+          },
+          defaultValue: formData.images ?? [],
         };
       },
     },
@@ -136,13 +159,17 @@
       colProps: {
         span: 18,
       },
-      rules: [{ required: true }],
+      rules: [{ required: false }],
       render: ({ model, field }) => {
         return h(Tinymce, {
           value: model[field],
           onChange: (value: string) => {
             model[field] = value;
             formData.content = value;
+          },
+          showImageUpload: false,
+          options: {
+            menubar: 'edit insert view format table',
           },
         });
       },
@@ -158,16 +185,18 @@
         formData.title = '';
         formData.sort = 10;
         formData.desc = '';
-        formData.content = '';
+        formData.images = [];
         formData.cover = '';
         formData.status = 'DOWN';
+        formData.content = '';
         methods.setFieldsValue({
           title: '',
           desc: '',
-          content: '',
+          images: [],
           sort: 10,
           cover: '',
           status: 0,
+          content: '',
         });
         methods.clearValidate();
       };
@@ -187,6 +216,7 @@
             title: info.title,
             desc: info.desc,
             sort: info.sort,
+            images: info.images,
             content: info.content,
             cover: !!info.cover ? [info.cover] : [],
             status: info.status == 'UP' ? 1 : 0,
@@ -194,9 +224,10 @@
           formData.title = info.title;
           formData.desc = info.desc;
           formData.sort = info.sort;
-          formData.content = info.content;
+          formData.images = info.images;
           formData.cover = info.cover;
           formData.status = info.status;
+          formData.content = info.content;
         });
         pageTitle.value = '编辑产业';
       } else {

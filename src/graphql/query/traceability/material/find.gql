@@ -1,0 +1,16 @@
+query traceability_material($id: ID!){
+  traceability_material(id: $id) {
+    id
+    name
+    category
+    number
+    unit
+    images
+    operator
+    phone
+    warehouse
+    remark
+    created_at
+    updated_at
+  }
+}

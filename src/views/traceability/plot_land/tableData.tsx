@@ -5,8 +5,7 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: 'ID',
       dataIndex: 'id',
-      fixed: 'left',
-      width: '20px',
+      width: '80px',
     },
     {
       title: '名称',

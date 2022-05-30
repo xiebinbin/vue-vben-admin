@@ -3,7 +3,9 @@ query big_data_industry_article($id: ID!){
     id
     title
     sort
+    images
     status
+    desc
     content
     cover
     created_at

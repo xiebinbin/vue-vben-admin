@@ -1,0 +1,6 @@
+mutation common_video_update($id: ID!, $input: CommonVideoEditInput!){
+  common_video_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

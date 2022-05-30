@@ -1,6 +1,0 @@
-mutation big_data_map_article_add($input: BigDataMapArticleInput!){
-  big_data_map_article_add(input: $input) {
-    code
-    message
-  }
-}

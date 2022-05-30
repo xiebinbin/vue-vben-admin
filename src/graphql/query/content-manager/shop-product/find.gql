@@ -1,0 +1,14 @@
+query common_shop_product($id: ID!){
+  common_shop_product(id: $id) {
+    id
+    name
+    images
+    price
+    desc
+    status
+    company
+    sort
+    created_at
+    updated_at
+  }
+}

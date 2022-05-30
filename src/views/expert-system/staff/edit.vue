@@ -16,19 +16,23 @@
   </PageWrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue';
+  import { defineComponent, ref, reactive, h, getCurrentInstance, onMounted } from 'vue';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { CollapseContainer } from '/@/components/Container';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { PageWrapper } from '/@/components/Page';
   import { uploadApi } from '/@/api/sys/upload';
   import gql from '/@/graphql/index';
-  const nickname = ref<string>('');
-  const avatar = ref<string>('');
-  const jobTitle = ref<string>('');
-  const workUnit = ref<string>('');
-  const expertise = ref<string>('');
-  const categoryId = ref<any>(null);
+  import { Tinymce } from '/@/components/Tinymce/index';
+  const formData = reactive({
+    name: '',
+    content: '',
+    job_title: '',
+    work_unit: '',
+    avatar: '',
+    expertise: '',
+    expert_system_staff_category_id: null,
+  });
   const itemId = ref<any>(null);
   const pageTitle = ref<string>('知识分类');
   const schemas: FormSchema[] = [
@@ -48,12 +52,13 @@
       componentProps: {
         placeholder: '请输入姓名',
         onChange: (e: any) => {
-          nickname.value = e.target.value;
+          formData.name = e.target.value;
         },
+        defaultValue: formData.name,
       },
     },
     {
-      field: 'staff_category_id',
+      field: 'expert_system_staff_category_id',
       component: 'Select',
       label: '专家分类',
       colProps: {
@@ -74,12 +79,12 @@
           api: uploadApi,
           onChange: (fileList: any) => {
             if (fileList.length > 0) {
-              avatar.value = fileList[0];
+              formData.avatar = fileList[0];
             } else {
-              avatar.value = '';
+              formData.avatar = '';
             }
           },
-          defaultValue: [avatar.value],
+          defaultValue: formData.avatar == '' ? [formData.avatar] : [],
         };
       },
     },
@@ -94,9 +99,9 @@
         return {
           placeholder: '请输入内容',
           onChange: (e: any) => {
-            jobTitle.value = e.target.value;
+            formData.job_title = e.target.value;
           },
-          defaultValue: jobTitle.value,
+          defaultValue: formData.job_title,
         };
       },
     },
@@ -111,9 +116,9 @@
         return {
           placeholder: '请输入内容',
           onChange: (e: any) => {
-            workUnit.value = e.target.value;
+            formData.job_title = e.target.value;
           },
-          defaultValue: workUnit.value,
+          defaultValue: formData.job_title,
         };
       },
     },
@@ -128,10 +133,32 @@
         return {
           placeholder: '请输入内容',
           onChange: (e: any) => {
-            expertise.value = e.target.value;
+            formData.expertise = e.target.value;
           },
-          defaultValue: expertise.value,
+          defaultValue: formData.expertise,
         };
+      },
+    },
+    {
+      field: 'content',
+      component: 'Input',
+      label: '内容',
+      colProps: {
+        span: 18,
+      },
+      rules: [{ required: false }],
+      render: ({ model, field }) => {
+        return h(Tinymce, {
+          value: model[field],
+          onChange: (value: string) => {
+            model[field] = value;
+            formData.content = value;
+          },
+          showImageUpload: false,
+          options: {
+            menubar: 'edit insert view format table',
+          },
+        });
       },
     },
   ];
@@ -157,7 +184,7 @@
           });
         }
         methods.updateSchema({
-          field: 'staff_category_id',
+          field: 'expert_system_staff_category_id',
           component: 'Select',
           label: '专家分类',
           colProps: {
@@ -167,10 +194,10 @@
             placeholder: '请选择',
             onChange: (val: any) => {
               console.log(val);
-              categoryId.value = val;
+              formData.expert_system_staff_category_id = val;
             },
             options,
-            defaultValue: '',
+            defaultValue: formData.expert_system_staff_category_id,
           },
         });
       });
@@ -183,6 +210,12 @@
           expertise: '',
           staff_category_id: null,
         });
+        formData.name = '';
+        formData.avatar = '';
+        formData.job_title = '';
+        formData.work_unit = '';
+        formData.expertise = '';
+        formData.expert_system_staff_category_id = null;
         methods.clearValidate();
       };
       const query = instance?.proxy?.$route?.query;
@@ -203,8 +236,14 @@
             job_title: info.job_title,
             work_unit: info.work_unit,
             expertise: info.expertise,
-            staff_category_id: info?.expert_system_staff_category?.id,
+            expert_system_staff_category_id: info?.expert_system_staff_category?.id,
           });
+          formData.name = info.name;
+          formData.avatar = info.avatar;
+          formData.job_title = info.job_title;
+          formData.work_unit = info.work_unit;
+          formData.expertise = info.expertise;
+          formData.expert_system_staff_category_id = info?.expert_system_staff_category_id?.id;
         });
         pageTitle.value = '编辑专家';
       } else {
@@ -213,17 +252,7 @@
       return {
         schemas,
         handleReset,
-        handleSubmit: (values) => {
-          let avatarUrl: string =
-            !!values.avatar && values.avatar.length > 0 ? values.avatar[0] : '';
-          const inputValue = {
-            name: values?.name,
-            avatar: avatarUrl,
-            job_title: values?.job_title,
-            work_unit: values?.work_unit,
-            expertise: values?.expertise,
-            expert_system_staff_category_id: values?.staff_category_id,
-          };
+        handleSubmit: () => {
           if (!!itemId.value) {
             // 更新
             instance?.proxy?.$apollo
@@ -231,7 +260,7 @@
                 mutation: gql.updateStaffGQL,
                 variables: {
                   id: itemId.value,
-                  input: inputValue,
+                  input: formData,
                 },
               })
               .then(() => {
@@ -246,7 +275,7 @@
               ?.mutate({
                 mutation: gql.addStaffGQL,
                 variables: {
-                  input: inputValue,
+                  input: formData,
                 },
               })
               .then(() => {

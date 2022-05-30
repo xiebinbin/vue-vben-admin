@@ -21,7 +21,7 @@
   import { useMessage } from '/@/hooks/web/useMessage';
   import { PageWrapper } from '/@/components/Page';
   import gql from '/@/graphql/index';
-  const pageTitle = ref<string>('产业发展简介');
+  const pageTitle = ref<string>('基本信息');
   const formData = reactive({
     jkdw: '',
     cgqs: '',

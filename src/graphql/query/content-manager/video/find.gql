@@ -1,0 +1,12 @@
+query common_video($id: ID!){
+  common_video(id: $id) {
+    id
+    name
+    cover
+    play_url
+    status
+    sort
+    created_at
+    updated_at
+  }
+}

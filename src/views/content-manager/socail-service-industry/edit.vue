@@ -36,6 +36,7 @@
     status: 'DOWN',
     address: '',
     content: '',
+    tag: '供应',
   });
 
   const schemas: FormSchema[] = [
@@ -154,6 +155,33 @@
             },
           ],
           defaultValue: formData.pricing_unit,
+        };
+      },
+    },
+    {
+      field: 'tag',
+      component: 'Select',
+      label: '标记',
+      colProps: {
+        span: 18,
+      },
+      componentProps: ({}) => {
+        return {
+          placeholder: '请输入',
+          onChange: (val: any) => {
+            formData.tag = val;
+          },
+          options: [
+            {
+              label: '供应',
+              value: '供应',
+            },
+            {
+              label: '需求',
+              value: '需求',
+            },
+          ],
+          defaultValue: formData.tag,
         };
       },
     },
@@ -278,6 +306,7 @@
         formData.phone = '';
         formData.content = '';
         formData.address = '';
+        formData.tag = '';
         methods.setFieldsValue({
           title: '',
           category: '采收',
@@ -289,6 +318,7 @@
           status: 'DOWN',
           address: '',
           content: '',
+          tag: '供应',
         });
         methods.clearValidate();
       };
@@ -315,6 +345,7 @@
             contact: info.contact,
             address: info.address,
             content: info.content,
+            tag: info.tag,
           });
           formData.title = info.title;
           formData.category = info.category;
@@ -327,6 +358,7 @@
           formData.status = info.status;
           formData.address = info.address;
           formData.content = info.content;
+          formData.tag = info.tag;
         });
         pageTitle.value = '编辑社会化服务';
       } else {

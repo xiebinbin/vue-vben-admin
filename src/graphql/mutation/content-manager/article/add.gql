@@ -1,0 +1,6 @@
+mutation article_add($input: ArticleInput!){
+  article_add(input: $input) {
+    code
+    message
+  }
+}

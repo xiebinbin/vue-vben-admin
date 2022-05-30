@@ -1,0 +1,17 @@
+query common_video_list($input: CommonVideoListInput!){
+  common_video_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      name
+      play_url
+      status
+      sort
+      created_at
+      updated_at
+    }
+  }
+}

@@ -23,8 +23,8 @@
   import { PageWrapper } from '/@/components/Page';
   import { uploadApi } from '/@/api/sys/upload';
   import gql from '/@/graphql/index';
-  import { Tinymce } from '/@/components/Tinymce/index';
   import { useRoute } from 'vue-router';
+  import { Tinymce } from '/@/components/Tinymce/index';
 
   const itemId = ref<any>(null);
   const inputData = reactive({
@@ -36,6 +36,7 @@
     processing_company_id: null,
     remark: '',
     status: 'DOWN',
+    images: [],
   });
   const processingCompanyAllParams = reactive({
     q: '',
@@ -119,7 +120,7 @@
       component: 'Upload',
       label: '封面',
       colProps: {
-        span: 12,
+        span: 18,
       },
       componentProps: ({}) => {
         return {
@@ -133,6 +134,28 @@
             }
           },
           defaultValue: [inputData.cover],
+        };
+      },
+    },
+    {
+      field: 'images',
+      component: 'Upload',
+      label: '图片列表(限4张 300*300)',
+      colProps: {
+        span: 18,
+      },
+      componentProps: ({}) => {
+        return {
+          multiple: true,
+          api: uploadApi,
+          onChange: (fileList: any) => {
+            if (fileList.length > 0) {
+              inputData.images = fileList;
+            } else {
+              inputData.images = [];
+            }
+          },
+          defaultValue: inputData.images ?? [],
         };
       },
     },
@@ -224,13 +247,17 @@
       colProps: {
         span: 18,
       },
-      rules: [{ required: true }],
+      rules: [{ required: false }],
       render: ({ model, field }) => {
         return h(Tinymce, {
           value: model[field],
           onChange: (value: string) => {
             model[field] = value;
             inputData.content = value;
+          },
+          showImageUpload: false,
+          options: {
+            menubar: 'edit insert view format table',
           },
         });
       },
@@ -251,12 +278,14 @@
         inputData.sort = 10;
         inputData.remark = '';
         inputData.content = '';
+        inputData.images = [];
         inputData.status = 'DOWN';
         inputData.processing_company_id = null;
         methods.setFieldsValue({
           name: '',
           cover: '',
           desc: '',
+          images: [],
           content: '',
           sort: 10,
           processing_company_id: null,
@@ -282,18 +311,20 @@
             name: info.name,
             cover: !!info.cover ? [info.cover] : [],
             desc: info.desc,
-            content: info.content,
+            images: info.images,
             sort: info.sort,
+            content: info.content,
             processing_company_id: info?.processing_company?.id,
             remark: info.remark,
             status: info.status,
           });
           inputData.name = info.name;
           inputData.cover = info.cover;
+          inputData.content = info.content;
           inputData.desc = info.desc;
           inputData.sort = info.sort;
           inputData.remark = info.remark;
-          inputData.content = info.content;
+          inputData.images = info.images;
           inputData.status = info.status;
           inputData.processing_company_id = info?.processing_company?.id;
           processingCompanyAllParams.q = info?.processing_company.name;

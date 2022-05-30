@@ -1,0 +1,11 @@
+query fixed_asset($id: ID!){
+  fixed_asset(id: $id) {
+    id
+    title
+    images
+    cover
+    content
+    created_at
+    updated_at
+  }
+}

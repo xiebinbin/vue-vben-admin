@@ -1,6 +1,0 @@
-mutation traceability_material_input_update($id: ID!, $input: TraceabilityMaterialInputInput!){
-  traceability_material_input_update(id: $id, input: $input) {
-    code
-    message
-  }
-}

@@ -1,49 +1,51 @@
 <template>
   <PageWrapper contentBackground contentClass="flex" dense contentFullHeight fixedHeight>
-    <BasicTable :loading="loading" :dataSource="items" @register="registerTable">
-      <template #action="{ record }">
-        <TableAction
-          :actions="[
-            {
-              label: '編輯',
-              icon: 'ic:outline-edit',
-              onClick: () => handleEdit(record),
-            },
-            {
-              label: record?.online_status == 0 ? '上线' : '下线',
-              icon:
-                record?.online_status == 0
-                  ? 'ant-design:cloud-upload-outlined'
-                  : 'ant-design:cloud-download-outlined',
-              color: record?.online_status == 0 ? 'success' : 'error',
-              popConfirm: {
-                title: '是否' + (record?.online_status == 0 ? '上线' : '下线') + '？',
-                confirm: () => {
-                  if (record?.online_status == 0) {
-                    handleUp(record);
-                  } else {
-                    handleDown(record);
-                  }
+    <div style="width: 80%">
+      <BasicTable :loading="loading" :dataSource="items" @register="registerTable">
+        <template #action="{ record }">
+          <TableAction
+            :actions="[
+              {
+                label: '編輯',
+                icon: 'ic:outline-edit',
+                onClick: () => handleEdit(record),
+              },
+              {
+                label: record?.online_status == 0 ? '上线' : '下线',
+                icon:
+                  record?.online_status == 0
+                    ? 'ant-design:cloud-upload-outlined'
+                    : 'ant-design:cloud-download-outlined',
+                color: record?.online_status == 0 ? 'success' : 'error',
+                popConfirm: {
+                  title: '是否' + (record?.online_status == 0 ? '上线' : '下线') + '？',
+                  confirm: () => {
+                    if (record?.online_status == 0) {
+                      handleUp(record);
+                    } else {
+                      handleDown(record);
+                    }
+                  },
                 },
               },
-            },
-            {
-              label: '删除',
-              icon: 'ic:outline-delete-outline',
-              color: 'error',
-              popConfirm: {
-                title: '是否刪除？',
-                confirm: () => handleDelete(record),
+              {
+                label: '删除',
+                icon: 'ic:outline-delete-outline',
+                color: 'error',
+                popConfirm: {
+                  title: '是否刪除？',
+                  confirm: () => handleDelete(record),
+                },
               },
-            },
-          ]"
-        />
-      </template>
-      <template #form-custom> xxx </template>
-      <template #toolbar>
-        <a-button type="primary" @click="handleAdd">添加知识</a-button>
-      </template>
-    </BasicTable>
+            ]"
+          />
+        </template>
+        <template #form-custom> xxx </template>
+        <template #toolbar>
+          <a-button type="primary" @click="handleAdd">添加知识</a-button>
+        </template>
+      </BasicTable>
+    </div>
   </PageWrapper>
 </template>
 <script lang="ts">

@@ -1,0 +1,21 @@
+query traceability_sale_product($id: ID!){
+  traceability_sale_product(id: $id) {
+    id
+    processing_company{
+      id
+      name
+    }
+    name
+    number
+    unit
+    unit_price
+    total_price
+    images
+    operator
+    phone
+    warehouse
+    remark
+    created_at
+    updated_at
+  }
+}

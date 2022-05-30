@@ -1,0 +1,19 @@
+query common_economic_benefit_first{
+  common_economic_benefit_first{
+    title
+    data {
+      title
+      projects {
+        project_name
+        size
+        unit
+        unit_capacity
+        total_capacity
+        unit_price
+        total_price
+        remark
+      }
+    }
+    created_at
+  }
+}

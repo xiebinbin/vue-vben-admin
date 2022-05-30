@@ -1,0 +1,6 @@
+mutation maintenance_record_remove($id: ID!){
+  maintenance_record_remove(id: $id) {
+    code
+    message
+  }
+}

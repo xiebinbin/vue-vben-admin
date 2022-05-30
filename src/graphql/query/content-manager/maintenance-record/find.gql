@@ -1,0 +1,14 @@
+query maintenance_record($id: ID!){
+  maintenance_record(id: $id) {
+    id
+    title
+    fixed_asset{
+      id
+      title
+    }
+    images
+    content
+    created_at
+    updated_at
+  }
+}

@@ -6,30 +6,29 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: 'ID',
       dataIndex: 'id',
-      fixed: 'left',
-      width: 80,
+      width: '80px',
     },
     {
       title: '标题',
       dataIndex: 'title',
-      width: 100,
+      width: '300px',
     },
     {
       title: '文章分类',
       dataIndex: 'expert_system_article_category.name',
-      width: 100,
+      width: '120px',
       customRender: ({ record }) => h('span', record?.expert_system_article_category?.name),
     },
     {
       title: '专家',
       dataIndex: 'expert_system_staff.name',
-      width: 100,
+      width: '120px',
       customRender: ({ record }) => h('span', record?.expert_system_staff?.name),
     },
     {
       title: '状态',
       dataIndex: 'online_status',
-      width: 100,
+      width: '80px',
       customRender: ({ record }) => {
         return h(
           Tag,
@@ -42,7 +41,7 @@ export function getBasicColumns(): BasicColumn[] {
     },
     {
       title: '创建时间',
-      width: 100,
+      width: '180px',
       dataIndex: 'created_at',
     },
   ];

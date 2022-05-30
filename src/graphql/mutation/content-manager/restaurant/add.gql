@@ -1,0 +1,6 @@
+mutation common_restaurant_add($input: CommonRestaurantEditInput!){
+  common_restaurant_add(input: $input) {
+    code
+    message
+  }
+}

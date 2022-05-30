@@ -4,6 +4,7 @@ query traceability_plot_land($id: ID!){
     title
     code
     area
+    crop
     remark
     farmer{
       id

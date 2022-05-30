@@ -1,6 +1,0 @@
-mutation traceability_material_output_add($input: TraceabilityMaterialOutputInput!){
-  traceability_material_output_add(input: $input) {
-    code
-    message
-  }
-}

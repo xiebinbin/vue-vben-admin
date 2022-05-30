@@ -1,0 +1,6 @@
+mutation common_land_planning_remove($id: ID!){
+  common_land_planning_remove(id: $id) {
+    code
+    message
+  }
+}

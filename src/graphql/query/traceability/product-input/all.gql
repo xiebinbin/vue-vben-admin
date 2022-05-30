@@ -1,6 +1,0 @@
-query traceability_product_input_all($input: TraceabilityProductInputAllInput!){
-  traceability_product_input_all(input: $input) {
-    id
-    name
-  }
-}

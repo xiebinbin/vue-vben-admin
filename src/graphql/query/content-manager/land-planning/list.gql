@@ -1,0 +1,15 @@
+query common_land_planning_list($input: CommonLandPlanningListInput!){
+  common_land_planning_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      project
+      sort
+      created_at
+      updated_at
+    }
+  }
+}

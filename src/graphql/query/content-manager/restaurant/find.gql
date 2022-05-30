@@ -1,0 +1,18 @@
+query common_restaurant($id: ID!){
+  common_restaurant(id: $id) {
+    id
+    name
+    rer_capital_consumption
+    contact
+    telephone
+    address
+    images
+    content
+    status
+    is_dining
+    is_accommodation
+    sort
+    created_at
+    updated_at
+  }
+}

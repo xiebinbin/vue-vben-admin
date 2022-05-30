@@ -7,8 +7,8 @@ const expertSystem: AppRouteModule = {
   component: LAYOUT,
   redirect: 'expert-system',
   meta: {
-    orderNo: 15,
-    icon: 'ion:key-outline',
+    orderNo: 3,
+    icon: 'ant-design:paper-clip-outlined',
     title: '专家系统',
     roles: [RoleEnum.SUPER, RoleEnum.ADMINISTRATOR],
   },
@@ -19,7 +19,6 @@ const expertSystem: AppRouteModule = {
       component: () => import('/@/views/expert-system/staff-category/index.vue'),
       meta: {
         orderNo: 15,
-        icon: 'ion:key-outline',
         title: '专家分类',
         roles: [RoleEnum.SUPER, RoleEnum.ADMINISTRATOR],
       },
@@ -42,7 +41,6 @@ const expertSystem: AppRouteModule = {
       component: () => import('/@/views/expert-system/staff/index.vue'),
       meta: {
         orderNo: 15,
-        icon: 'ion:key-outline',
         title: '专家管理',
         roles: [RoleEnum.SUPER, RoleEnum.ADMINISTRATOR],
       },
@@ -65,7 +63,6 @@ const expertSystem: AppRouteModule = {
       component: () => import('/@/views/expert-system/article-category/index.vue'),
       meta: {
         orderNo: 15,
-        icon: 'ion:key-outline',
         title: '知识分类',
         roles: [RoleEnum.SUPER, RoleEnum.ADMINISTRATOR],
       },
@@ -88,7 +85,6 @@ const expertSystem: AppRouteModule = {
       name: 'articleIndex',
       component: () => import('/@/views/expert-system/article/index.vue'),
       meta: {
-        icon: 'ion:key-outline',
         title: '知识管理',
         roles: [RoleEnum.SUPER, RoleEnum.ADMINISTRATOR],
       },
@@ -110,7 +106,6 @@ const expertSystem: AppRouteModule = {
       name: 'questionIndex',
       component: () => import('/@/views/expert-system/question/index.vue'),
       meta: {
-        icon: 'ion:key-outline',
         title: '留言管理',
         roles: [RoleEnum.SUPER, RoleEnum.ADMINISTRATOR],
       },

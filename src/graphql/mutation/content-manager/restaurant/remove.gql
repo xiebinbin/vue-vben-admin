@@ -1,0 +1,6 @@
+mutation common_restaurant_remove($id: ID!){
+  common_restaurant_remove(id: $id) {
+    code
+    message
+  }
+}

@@ -1,0 +1,6 @@
+mutation common_shop_product_remove($id: ID!){
+  common_shop_product_remove(id: $id) {
+    code
+    message
+  }
+}

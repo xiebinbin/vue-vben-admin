@@ -1,0 +1,6 @@
+mutation common_economic_benefit_add($input: CommonEconomicBenefitEditInput!){
+  common_economic_benefit_add(input: $input) {
+    code
+    message
+  }
+}

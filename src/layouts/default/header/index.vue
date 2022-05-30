@@ -34,11 +34,7 @@
     <!-- action  -->
     <div :class="`${prefixCls}-action`">
       <ErrorAction v-if="getUseErrorHandle" :class="`${prefixCls}-action__item error-action`" />
-
-      <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" />
       <UserDropDown :theme="getHeaderTheme" />
-
-      <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
   </Header>
 </template>
@@ -59,11 +55,10 @@
   import { MenuModeEnum, MenuSplitTyeEnum } from '/@/enums/menuEnum';
   import { SettingButtonPositionEnum } from '/@/enums/appEnum';
 
-  import { UserDropDown, LayoutBreadcrumb, FullScreen, ErrorAction } from './components';
+  import { UserDropDown, LayoutBreadcrumb, ErrorAction } from './components';
   import { useAppInject } from '/@/hooks/web/useAppInject';
   import { useDesign } from '/@/hooks/web/useDesign';
 
-  import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
   import { useLocale } from '/@/locales/useLocale';
 
   export default defineComponent({
@@ -75,11 +70,7 @@
       LayoutBreadcrumb,
       LayoutMenu,
       UserDropDown,
-      FullScreen,
       ErrorAction,
-      SettingDrawer: createAsyncComponent(() => import('/@/layouts/default/setting/index.vue'), {
-        loading: true,
-      }),
     },
     props: {
       fixed: propTypes.bool,

@@ -1,0 +1,15 @@
+query traceability_sale_product_list($input: TraceabilitySaleProductListInput!){
+  traceability_sale_product_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      name
+      operator
+      created_at
+      updated_at
+    }
+  }
+}

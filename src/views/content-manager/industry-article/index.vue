@@ -1,31 +1,33 @@
 <template>
   <PageWrapper contentBackground contentClass="flex" dense contentFullHeight fixedHeight>
-    <BasicTable :loading="loading" :dataSource="items" @register="registerTable">
-      <template #action="{ record }">
-        <TableAction
-          :actions="[
-            {
-              label: '編輯',
-              icon: 'ic:outline-edit',
-              onClick: () => handleEdit(record),
-            },
-            {
-              label: '删除',
-              icon: 'ic:outline-delete-outline',
-              color: 'error',
-              popConfirm: {
-                title: '是否刪除？',
-                confirm: () => handleDelete(record),
+    <div style="width: 80%">
+      <BasicTable :loading="loading" :dataSource="items" @register="registerTable">
+        <template #action="{ record }">
+          <TableAction
+            :actions="[
+              {
+                label: '編輯',
+                icon: 'ic:outline-edit',
+                onClick: () => handleEdit(record),
               },
-            },
-          ]"
-        />
-      </template>
-      <template #form-custom> xxx </template>
-      <template #toolbar>
-        <a-button type="primary" @click="handleAdd">添加产业</a-button>
-      </template>
-    </BasicTable>
+              {
+                label: '删除',
+                icon: 'ic:outline-delete-outline',
+                color: 'error',
+                popConfirm: {
+                  title: '是否刪除？',
+                  confirm: () => handleDelete(record),
+                },
+              },
+            ]"
+          />
+        </template>
+        <template #form-custom> xxx </template>
+        <template #toolbar>
+          <a-button type="primary" @click="handleAdd">添加产业</a-button>
+        </template>
+      </BasicTable>
+    </div>
   </PageWrapper>
 </template>
 <script lang="ts">
@@ -178,13 +180,13 @@
       };
       const handleEdit = (record: Recordable) => {
         instance?.proxy?.$router.push({
-          path: '/content-manager/industry-article/edit',
+          name: 'IndustryArticleEdit',
           query: { id: record.id },
         });
       };
       const handleAdd = () => {
         instance?.proxy?.$router.push({
-          path: '/content-manager/industry-article/edit',
+          name: 'IndustryArticleEdit',
         });
       };
       return {

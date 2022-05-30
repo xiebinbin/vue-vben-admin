@@ -1,0 +1,15 @@
+query common_land_planning($id: ID!){
+  common_land_planning(id: $id) {
+    id
+    project
+    location
+    size
+    land_use_indicators
+    land_source
+    control_indicators
+    land_nature
+    sort
+    created_at
+    updated_at
+  }
+}

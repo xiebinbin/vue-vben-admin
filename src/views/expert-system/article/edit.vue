@@ -15,21 +15,25 @@
   </PageWrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, getCurrentInstance, onMounted, h } from 'vue';
+  import { defineComponent, ref, reactive, getCurrentInstance, onMounted, h } from 'vue';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { CollapseContainer } from '/@/components/Container';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { PageWrapper } from '/@/components/Page';
   import { Tinymce } from '/@/components/Tinymce/index';
+  import { uploadApi } from '/@/api/sys/upload';
   import gql from '/@/graphql/index';
-  const title = ref<string>('');
-  const introduction = ref<string>('');
-  const content = ref<string>('');
-  const categoryId = ref<any>(null);
-  const onlineStatus = ref(0);
-  const staffId = ref<any>(null);
   const itemId = ref<any>(null);
   const pageTitle = ref<string>('知识管理');
+  const formData = reactive({
+    cover: '',
+    title: '',
+    introduction: '',
+    content: '',
+    expert_system_article_category_id: null,
+    expert_system_staff_id: null,
+    online_status: 0,
+  });
   const schemas: FormSchema[] = [
     {
       field: 'divider-basic',
@@ -48,14 +52,36 @@
         return {
           placeholder: '请输入内容',
           onChange: (e: any) => {
-            title.value = e.target.value;
+            formData.title = e.target.value;
           },
-          defaultValue: title.value,
+          defaultValue: formData.title,
         };
       },
     },
     {
-      field: 'article_category_id',
+      field: 'cover',
+      component: 'Upload',
+      label: '封面(300*300)',
+      colProps: {
+        span: 12,
+      },
+      componentProps: ({}) => {
+        return {
+          multiple: false,
+          api: uploadApi,
+          onChange: (fileList: any) => {
+            if (fileList.length > 0) {
+              formData.cover = fileList[0];
+            } else {
+              formData.cover = '';
+            }
+          },
+          defaultValue: !!formData.cover ? [formData.cover] : [],
+        };
+      },
+    },
+    {
+      field: 'expert_system_article_category_id',
       component: 'Select',
       label: '知识分类',
       colProps: {
@@ -65,14 +91,14 @@
         return {
           placeholder: '请选择',
           onChange: (val: any) => {
-            categoryId.value = val;
+            formData.expert_system_article_category_id = val;
           },
           options: [],
         };
       },
     },
     {
-      field: 'staff_id',
+      field: 'expert_system_staff_id',
       component: 'Select',
       label: '专家',
       colProps: {
@@ -82,7 +108,7 @@
         return {
           placeholder: '请选择',
           onChange: (val: any) => {
-            staffId.value = val;
+            formData.expert_system_staff_id = val;
           },
           options: [],
         };
@@ -101,9 +127,9 @@
         checkedChildren: '上线',
         unCheckedChildren: '下架',
         onChange: (val: any) => {
-          onlineStatus.value = val;
+          formData.online_status = val;
         },
-        defaultValue: onlineStatus.value,
+        defaultValue: formData.online_status,
       },
     },
     {
@@ -116,9 +142,9 @@
       componentProps: ({}) => {
         return {
           onChange: (e) => {
-            introduction.value = e?.target?.value;
+            formData.introduction = e?.target?.value;
           },
-          defaultValue: introduction.value,
+          defaultValue: formData.introduction,
           autosize: { minRows: 6, maxRows: 12 },
         };
       },
@@ -136,7 +162,7 @@
           value: model[field],
           onChange: (value: string) => {
             model[field] = value;
-            content.value = value;
+            formData.content = value;
           },
         });
       },
@@ -180,7 +206,7 @@
         }
         methods.updateSchema([
           {
-            field: 'article_category_id',
+            field: 'expert_system_article_category_id',
             component: 'Select',
             label: '知识分类',
             colProps: {
@@ -190,15 +216,15 @@
               return {
                 placeholder: '请选择',
                 onChange: (val: any) => {
-                  categoryId.value = val;
+                  formData.expert_system_article_category_id = val;
                 },
                 options,
-                defaultValue: categoryId.value,
+                defaultValue: formData.expert_system_article_category_id,
               };
             },
           },
           {
-            field: 'staff_id',
+            field: 'expert_system_staff_id',
             component: 'Select',
             label: '专家',
             colProps: {
@@ -208,29 +234,31 @@
               return {
                 placeholder: '请选择',
                 onChange: (val: any) => {
-                  staffId.value = val;
+                  formData.expert_system_staff_id = val;
                 },
                 options: staffOptions,
-                defaultValue: staffId.value,
+                defaultValue: formData.expert_system_staff_id,
               };
             },
           },
         ]);
       });
       const handleReset = () => {
-        title.value = '';
-        introduction.value = '';
-        content.value = '';
-        onlineStatus.value = 0;
-        staffId.value = null;
-        categoryId.value = null;
+        formData.cover = '';
+        formData.title = '';
+        formData.introduction = '';
+        formData.content = '';
+        formData.online_status = 0;
+        formData.expert_system_article_category_id = null;
+        formData.expert_system_staff_id = null;
         methods.setFieldsValue({
           title: '',
           introduction: '',
+          cover: [],
           content: '',
           online_status: 0,
-          staff_id: null,
-          article_category_id: null,
+          expert_system_article_category_id: null,
+          expert_system_staff_id: null,
         });
         methods.clearValidate();
       };
@@ -250,16 +278,18 @@
             title: info.title,
             introduction: info.introduction,
             content: info.content,
-            article_category_id: info.expert_system_article_category?.id,
-            staff_id: info.expert_system_staff?.id,
+            expert_system_article_category_id: info.expert_system_article_category?.id,
+            expert_system_staff_id: info.expert_system_staff?.id,
             online_status: info.online_status,
+            cover: !!info.cover ? [info.cover] : [],
           });
-          title.value = info.title;
-          introduction.value = info.introduction;
-          content.value = info.content;
-          categoryId.value = info.expert_system_article_category?.id;
-          staffId.value = info.expert_system_staff?.id;
-          onlineStatus.value = info.online_status;
+          formData.title = info.title;
+          formData.content = info.content;
+          formData.introduction = info.introduction;
+          formData.cover = info.cover;
+          formData.online_status = info.online_status;
+          formData.expert_system_staff_id = info.expert_system_staff_id;
+          formData.expert_system_article_category_id = info.expert_system_article_category_id;
         });
         pageTitle.value = '编辑知识';
       } else {
@@ -276,14 +306,7 @@
                 mutation: gql.updateExpertSystemArticleGQL,
                 variables: {
                   id: itemId.value,
-                  input: {
-                    title: title.value,
-                    introduction: introduction.value,
-                    content: content.value,
-                    expert_system_article_category_id: categoryId.value,
-                    expert_system_staff_id: staffId.value,
-                    online_status: onlineStatus.value,
-                  },
+                  input: formData,
                 },
               })
               .then(() => {
@@ -298,14 +321,7 @@
               ?.mutate({
                 mutation: gql.addExpertSystemArticleGQL,
                 variables: {
-                  input: {
-                    title: title.value,
-                    introduction: introduction.value,
-                    content: content.value,
-                    expert_system_article_category_id: categoryId.value,
-                    expert_system_staff_id: staffId.value,
-                    online_status: onlineStatus.value,
-                  },
+                  input: formData,
                 },
               })
               .then(() => {

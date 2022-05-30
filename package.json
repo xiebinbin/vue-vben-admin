@@ -10,7 +10,7 @@
     "bootstrap": "pnpm install",
     "serve": "npm run dev",
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production vite build && esno ./build/script/postBuild.ts",
+    "build": "cross-env NODE_ENV=production NODE_OPTIONS='--max-old-space-size=4096' vite build && esno ./build/script/postBuild.ts",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "pnpm clean:cache && npm run build",
     "report": "cross-env REPORT=true npm run build",
@@ -35,6 +35,7 @@
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons-vue": "^6.0.1",
+    "@antv/g2plot": "^2.4.16",
     "@apollo/client": "^3.6.2",
     "@iconify/iconify": "^2.1.1",
     "@logicflow/core": "^1.0.7",

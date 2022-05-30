@@ -1,0 +1,6 @@
+mutation maintenance_record_update($id: ID!, $input: MaintenanceRecordEditInput!){
+  maintenance_record_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

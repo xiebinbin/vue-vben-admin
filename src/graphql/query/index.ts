@@ -4,6 +4,7 @@ import iotSystem from './iot-system/index';
 import wormingSystem from './worming-system/index';
 import traceability from './traceability/index';
 import contentManager from './content-manager/index';
+import chart from './chart/index';
 
 export default {
   ...auth,
@@ -12,4 +13,5 @@ export default {
   ...wormingSystem,
   ...traceability,
   ...contentManager,
+  ...chart,
 };

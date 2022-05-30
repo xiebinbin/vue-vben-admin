@@ -1,0 +1,6 @@
+mutation common_land_planning_add($input: CommonLandPlanningEditInput!){
+  common_land_planning_add(input: $input) {
+    code
+    message
+  }
+}

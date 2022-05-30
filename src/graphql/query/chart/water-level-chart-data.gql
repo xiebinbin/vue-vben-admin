@@ -1,0 +1,10 @@
+query iot_water_level_chart_data($input: IotChartDataInput!){
+  iot_water_level_chart_data(input: $input) {
+    chart_items{
+      label
+      value
+      category
+    }
+    mod
+  }
+}

@@ -1,0 +1,6 @@
+mutation article_remove($id: ID!){
+  article_remove(id: $id) {
+    code
+    message
+  }
+}

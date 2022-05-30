@@ -24,19 +24,14 @@
   import { useMessage } from '/@/hooks/web/useMessage';
   import { PageWrapper } from '/@/components/Page';
   import gql from '/@/graphql/index';
-  interface InputItem {
-    title: String;
-    code: String;
-    farmer_id: Number | null;
-    area: Number;
-    remark: String;
-  }
-  const inputData = reactive<InputItem>({
+
+  const inputData = reactive({
     title: '',
     code: '',
     farmer_id: null,
     area: 0.0,
     remark: '',
+    crop: '',
   });
   const itemId = ref<any>(null);
   const instance = ref<any>(null);
@@ -67,6 +62,24 @@
             inputData.title = e.target.value;
           },
           defaultValue: inputData.title,
+        };
+      },
+    },
+    {
+      field: 'crop',
+      component: 'Input',
+      label: '作物',
+      required: true,
+      colProps: {
+        span: 24,
+      },
+      componentProps: ({}) => {
+        return {
+          placeholder: '请输入',
+          onChange: (e: any) => {
+            inputData.crop = e.target.value;
+          },
+          defaultValue: inputData.crop,
         };
       },
     },
@@ -186,10 +199,12 @@
         inputData.remark = '';
         inputData.farmer_id = null;
         inputData.area = 0.0;
+        inputData.crop = '';
         methods.setFieldsValue({
           title: '',
           code: '',
           remark: '',
+          crop: '',
           farmer_id: null,
           area: 0.0,
         });
@@ -214,7 +229,14 @@
             remark: info.remark,
             area: info.area,
             farmer_id: info?.farmer.id,
+            crop: info.crop,
           });
+          inputData.title = info.title;
+          inputData.code = info.code;
+          inputData.remark = info.remark;
+          inputData.area = info.area;
+          inputData.farmer_id = info?.farmer.id;
+          inputData.crop = info.crop;
         });
         pageTitle.value = '编辑地块';
       } else {

@@ -5,17 +5,16 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: 'ID',
       dataIndex: 'id',
-      fixed: 'left',
-      width: 80,
+      width: '80px',
     },
     {
       title: '分類名',
       dataIndex: 'name',
-      width: 100,
+      width: '300px',
     },
     {
       title: '创建时间',
-      width: 100,
+      width: '240px',
       dataIndex: 'created_at',
     },
   ];

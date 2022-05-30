@@ -1,6 +1,0 @@
-mutation traceability_material_output_remove($id: ID!){
-  traceability_material_output_remove(id: $id) {
-    code
-    message
-  }
-}

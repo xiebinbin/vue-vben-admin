@@ -1,6 +1,0 @@
-mutation traceability_product_remove($id: ID!){
-  traceability_product_remove(id: $id) {
-    code
-    message
-  }
-}

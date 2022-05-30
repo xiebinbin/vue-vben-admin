@@ -1,0 +1,10 @@
+query iot_soil_moisture_chart_data($input: IotChartDataInput!){
+  iot_soil_moisture_chart_data(input: $input) {
+    chart_items{
+      label
+      value
+      category
+    }
+    mod
+  }
+}

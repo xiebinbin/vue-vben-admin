@@ -1,0 +1,18 @@
+query maintenance_record_list($input: MaintenanceRecordListInput!){
+  maintenance_record_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      title
+      fixed_asset{
+        id
+        title
+      }
+      created_at
+      updated_at
+    }
+  }
+}

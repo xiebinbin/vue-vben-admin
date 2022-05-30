@@ -7,17 +7,22 @@ export function getBasicColumns(): BasicColumn[] {
       title: 'ID',
       dataIndex: 'id',
       fixed: 'left',
-      width: 80,
+      width: '80px',
     },
     {
       title: '标题',
       dataIndex: 'title',
-      width: 100,
+      width: 260,
+    },
+    {
+      title: '标记',
+      dataIndex: 'tag',
+      width: 80,
     },
     {
       title: '状态',
       dataIndex: 'status',
-      width: 100,
+      width: '80px',
       customRender: ({ record }) => {
         return h(
           Tag,
@@ -30,7 +35,7 @@ export function getBasicColumns(): BasicColumn[] {
     },
     {
       title: '创建时间',
-      width: 100,
+      width: '200px',
       dataIndex: 'created_at',
     },
   ];

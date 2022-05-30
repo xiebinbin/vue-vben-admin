@@ -1,0 +1,6 @@
+mutation fixed_asset_add($input: FixedAssetEditInput!){
+  fixed_asset_add(input: $input) {
+    code
+    message
+  }
+}

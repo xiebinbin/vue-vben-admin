@@ -4,18 +4,17 @@ query common_product($id: ID!){
     name
     cover
     desc
-    content
+    images
     processing_company {
       id
       name
-      organization_code_certificate
-      certificate_images
       remark
       created_at
       updated_at
     }
     status
     remark
+    content
     sort
     created_at
     updated_at

@@ -1,0 +1,6 @@
+mutation fixed_asset_remove($id: ID!){
+  fixed_asset_remove(id: $id) {
+    code
+    message
+  }
+}

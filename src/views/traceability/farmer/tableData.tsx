@@ -5,8 +5,7 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: 'ID',
       dataIndex: 'id',
-      fixed: 'left',
-      width: '20px',
+      width: '80px',
     },
     {
       title: '姓名',
@@ -15,7 +14,7 @@ export function getBasicColumns(): BasicColumn[] {
     },
     {
       title: '创建时间',
-      width: '200px',
+      width: '150px',
       dataIndex: 'created_at',
     },
   ];

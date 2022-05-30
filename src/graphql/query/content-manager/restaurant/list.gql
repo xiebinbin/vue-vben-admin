@@ -1,0 +1,20 @@
+query common_restaurant_list($input: CommonRestaurantListInput!){
+  common_restaurant_list(input: $input) {
+    current_page
+    last_page
+    total
+    limit
+    items {
+      id
+      name
+      rer_capital_consumption
+      contact
+      telephone
+      address
+      status
+      sort
+      created_at
+      updated_at
+    }
+  }
+}

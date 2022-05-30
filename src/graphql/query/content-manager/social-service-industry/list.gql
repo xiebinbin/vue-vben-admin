@@ -6,6 +6,7 @@ query big_data_social_service_industry_list($input: BigDataSocialServiceIndustry
     limit
     items {
       id
+      tag
       title
       status
       created_at

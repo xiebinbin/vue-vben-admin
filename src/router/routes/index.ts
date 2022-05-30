@@ -12,7 +12,7 @@ const routeModuleList: AppRouteModule[] = [];
 
 Object.keys(modules).forEach((key) => {
   const mod = modules[key].default || {};
-  if (/(expert-system|iot-system|worming-system|traceability|content-manager)/.test(mod.name)) {
+  if (/(expert-system|iot-system|traceability|shop-product|industry|meilin)/.test(mod.name)) {
     const modList = Array.isArray(mod) ? [...mod] : [mod];
     routeModuleList.push(...modList);
   }

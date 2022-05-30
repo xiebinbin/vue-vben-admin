@@ -1,6 +1,0 @@
-query traceability_material_input_all($input: TraceabilityMaterialInputAllInput!){
-  traceability_material_input_all(input: $input) {
-    id
-    name
-  }
-}

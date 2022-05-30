@@ -7,12 +7,12 @@ export function getBasicColumns(): BasicColumn[] {
       title: 'ID',
       dataIndex: 'id',
       fixed: 'left',
-      width: 80,
+      width: 100,
     },
     {
       title: '标题',
       dataIndex: 'title',
-      width: 100,
+      width: 350,
     },
     {
       title: '状态',
@@ -30,7 +30,7 @@ export function getBasicColumns(): BasicColumn[] {
     },
     {
       title: '创建时间',
-      width: 100,
+      width: 200,
       dataIndex: 'created_at',
     },
   ];

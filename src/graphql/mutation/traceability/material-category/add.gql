@@ -1,6 +1,0 @@
-mutation ttraceability_material_category_add($input: TraceabilityMaterialCategoryInput!){
-  traceability_material_category_add(input: $input) {
-    code
-    message
-  }
-}

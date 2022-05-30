@@ -1,0 +1,6 @@
+mutation common_land_planning_update($id: ID!, $input: CommonLandPlanningEditInput!){
+  common_land_planning_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

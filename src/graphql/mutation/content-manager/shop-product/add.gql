@@ -1,0 +1,6 @@
+mutation common_shop_product_add($input: CommonShopProductEditInput!){
+  common_shop_product_add(input: $input) {
+    code
+    message
+  }
+}

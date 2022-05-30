@@ -1,0 +1,6 @@
+mutation article_update($id: ID!, $input: ArticleInput!){
+  article_update(id: $id, input: $input) {
+    code
+    message
+  }
+}

@@ -1,12 +1,5 @@
 <template>
   <div :class="prefixCls" class="relative w-full h-full px-4">
-    <AppLocalePicker
-      class="absolute text-white top-4 right-4 enter-x xl:text-gray-600"
-      :showText="false"
-      v-if="!sessionTimeout && showLocale"
-    />
-    <AppDarkModeToggle class="absolute top-3 right-7 enter-x" v-if="!sessionTimeout" />
-
     <span class="-enter-x xl:hidden">
       <AppLogo :alwaysShowTitle="true" />
     </span>
@@ -22,10 +15,13 @@
               class="w-1/2 -mt-16 -enter-x"
             />
             <div class="mt-10 font-medium text-white -enter-x">
-              <span class="inline-block mt-4 text-3xl"> {{ t('sys.login.signInTitle') }}</span>
-            </div>
-            <div class="mt-5 font-normal text-white text-md dark:text-gray-500 -enter-x">
-              {{ t('sys.login.signInDesc') }}
+              <div class="mt-4 text-3xl">平武县果梅生猪循环现代农业园区</div>
+              <div class="mt-4">
+                <span class="text-2xl mr-32">管理系统</span>
+                <span class="font-normal text-white text-md dark:text-gray-500 -enter-x">
+                  平通羌族乡人民政府 监制
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -44,12 +40,9 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { AppLogo } from '/@/components/Application';
-  import { AppLocalePicker, AppDarkModeToggle } from '/@/components/Application';
   import LoginForm from './LoginForm.vue';
   import { useGlobSetting } from '/@/hooks/setting';
-  import { useI18n } from '/@/hooks/web/useI18n';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { useLocaleStore } from '/@/store/modules/locale';
 
   defineProps({
     sessionTimeout: {
@@ -59,11 +52,7 @@
 
   const globSetting = useGlobSetting();
   const { prefixCls } = useDesign('login');
-  const { t } = useI18n();
-  const localeStore = useLocaleStore();
-  const showLocale = localeStore.getShowPicker;
   const title = computed(() => globSetting?.title ?? '');
-  console.log(prefixCls);
 </script>
 <style lang="less">
   @prefix-cls: ~'@{namespace}-login';

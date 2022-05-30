@@ -5,13 +5,12 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: 'ID',
       dataIndex: 'id',
-      fixed: 'left',
-      width: 80,
+      width: '80px',
     },
     {
       title: '上传头像',
       dataIndex: 'avatar',
-      width: 100,
+      width: '80px',
       customRender: ({ record }) => {
         const avatar: string = record?.avatar ? record?.avatar : '';
         return h(
@@ -26,22 +25,21 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: '专家分类',
       dataIndex: 'expert_system_staff_category.name',
-      width: 100,
+      width: '180px',
       customRender: ({ record }) => h('span', {}, record?.expert_system_staff_category?.name),
     },
     {
       title: '专家名',
       dataIndex: 'name',
-      width: 100,
+      width: '120px',
     },
     {
       title: '职称',
       dataIndex: 'job_title',
-      width: 100,
+      width: '180px',
     },
     {
       title: '创建时间',
-      width: 100,
       dataIndex: 'created_at',
     },
   ];

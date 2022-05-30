@@ -1,0 +1,25 @@
+query article($id: ID!){
+  article(id: $id) {
+    id
+    title
+    tag
+    desc
+    cover
+    images
+    sort
+    status
+    is_marker
+    is_recommend
+    top
+    left
+    content
+    rer_capital_consumption
+    contact
+    telephone
+    address
+    channel
+    recommends
+    created_at
+    updated_at
+  }
+}
